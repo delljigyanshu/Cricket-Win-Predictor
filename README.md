@@ -51,7 +51,7 @@ Cricket-Win-Predictor/ <br/>
    Visit http://127.0.0.1:5000/
    ```
    
-🛠 Built With
+## 🛠 Built With
 
 - Python 🐍
 - Pandas
@@ -80,4 +80,5 @@ Jigyanshu Agrawal
 GitHub:[@delljigyanshu](https://github.com/delljigyanshu/Cricket-Win-Predictor.git)
 
 LinkedIn: [Jigyanshu Agrawal](https://www.linkedin.com/in/jigyanshu-agrawal?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)
+
 
