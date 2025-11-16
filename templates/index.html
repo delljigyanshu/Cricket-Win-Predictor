@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Cricket Win Probability Predictor — Modern</title>
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="app-header">
+      <div class="title-wrap">
+        <h1>Cricket Win Probability Predictor</h1>
+        <p class="subtitle">Enter the match state → get a calibrated win probability.</p>
+      </div>
+      <div class="brand">🏏</div>
+    </header>
+
+    <section class="layout">
+      <!-- LEFT: inputs -->
+      <aside class="card input-card">
+        <h2>Match Info</h2>
+
+        <div class="grid-3">
+          <div class="field">
+            <label>Score <small class="hint">runs</small></label>
+            <input id="score_before" type="number" value="120" />
+          </div>
+          <div class="field">
+            <label>Wickets lost <small class="hint">(0–10)</small></label>
+            <input id="wickets_before" type="number" value="3" min="0" max="10" />
+          </div>
+          <div class="field">
+            <label>Overs completed <small class="hint">e.g. 12.4</small></label>
+            <input id="overs_completed" type="text" value="12.4" />
+          </div>
+        </div>
+
+        <h3>Chase</h3>
+        <div class="grid-3">
+          <div class="field">
+            <label>Runs required</label>
+            <input id="runs_required" type="number" value="61" />
+          </div>
+          <div class="field">
+            <label>Balls remaining</label>
+            <input id="balls_remaining" type="number" value="48" />
+          </div>
+          <div class="field small">
+            <label>Required run rate</label>
+            <div class="inline">
+              <input id="req_run_rate" type="number" value="7.625" step="0.01" />
+              <button class="btn-ghost" id="calcRR" title="Auto-calc RRR">Auto</button>
+            </div>
+          </div>
+        </div>
+
+        <h3>Rates & Players</h3>
+        <div class="grid-3">
+          <div class="field">
+            <label>Current run rate</label>
+            <input id="current_run_rate" type="number" value="6.0" step="0.01" />
+          </div>
+          <div class="field">
+            <label>Batsman form <small class="hint">(0 = unknown)</small></label>
+            <input id="batsman_form" type="number" value="0" step="0.1" />
+          </div>
+          <div class="field">
+            <label>Bowler form <small class="hint">(0 = unknown)</small></label>
+            <input id="bowler_form" type="number" value="0" step="0.1" />
+          </div>
+        </div>
+
+        <div class="controls">
+          <button id="predictBtn" class="btn-primary">Predict Win Probability</button>
+          <button id="calcDerived" class="btn-ghost">Auto-calc derived</button>
+        </div>
+
+        <div class="help">
+          <strong>Tip:</strong> Leave player form = 0 if unknown. Use <em>Auto</em> to compute missing values.
+        </div>
+      </aside>
+
+      <!-- RIGHT: prediction -->
+      <section class="card result-card">
+        <div class="result-top">
+          <div class="gauge-wrap">
+            <svg id="gauge" viewBox="0 0 200 200" width="220" height="220" aria-hidden="true">
+              <defs>
+                <linearGradient id="ggrad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#00b894" />
+                  <stop offset="100%" stop-color="#0984e3" />
+                </linearGradient>
+              </defs>
+
+              <circle cx="100" cy="100" r="85" stroke="#eef5fb" stroke-width="18" fill="none" />
+              <circle id="gauge-arc" cx="100" cy="100" r="85" stroke="url(#ggrad)" stroke-width="18" fill="none"
+                      stroke-linecap="round" transform="rotate(-90 100 100)" stroke-dasharray="0 534" />
+              <text id="gauge-text" x="100" y="105" text-anchor="middle" font-size="28" font-weight="700" fill="#0b1220">0%</text>
+              <text x="100" y="135" text-anchor="middle" font-size="12" fill="#6b7280">Win Probability</text>
+            </svg>
+          </div>
+
+          <div class="stats">
+            <div class="stat-row"><div class="label">Logistic</div><div class="value" id="lr">—</div></div>
+            <div class="stat-row"><div class="label">GradientBoost</div><div class="value" id="gb">—</div></div>
+            <div class="stat-row combined"><div class="label">Combined</div><div class="value big" id="combined">—</div></div>
+
+            <div id="indicator" class="indicator">Status: —</div>
+            <div id="summary" class="summary">Prediction summary appears here after you click <strong>Predict</strong>.</div>
+          </div>
+        </div>
+
+        <div class="history">
+          <h4>Quick Facts</h4>
+          <ul id="facts">
+            <li>Runs required per ball: —</li>
+            <li>Wickets in hand: —</li>
+            <li>Pressure metric: —</li>
+          </ul>
+        </div>
+      </section>
+    </section>
+
+    <footer class="footer">
+      <small>Local demo • Ensure models exist in <code>models/</code></small>
+    </footer>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+/* static/styles.css
+   Modern, responsive styles with dark-mode support
+   Replace your current styles.css with this file.
+*/
+
+/* ---------- Variables ---------- */
+:root{
+  --bg: #f6f9fc;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --primary: #0b6cff;
+  --accent1: #00b894;
+  --accent2: #0984e3;
+  --danger: #ff6b6b;
+  --ok: #16a34a;
+  --shadow: 0 10px 30px rgba(16,24,40,0.08);
+  --radius: 12px;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  font-size: 14px;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* ---------- Reset & Base ---------- */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:#0f172a;
+  line-height:1.3;
+}
+a{color:inherit}
+
+/* ---------- App container ---------- */
+.app{
+  max-width:1200px;
+  margin:28px auto;
+  padding:20px;
+}
+
+/* Header */
+.app-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-bottom:18px;
+}
+.title-wrap h1{margin:0;font-size:24px;letter-spacing:-0.2px}
+.subtitle{color:var(--muted);margin-top:6px;font-size:13px}
+.brand{font-size:26px}
+
+/* ---------- Layout & Cards ---------- */
+.layout{display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap}
+.card{background:var(--card);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+.input-card{flex:0 0 560px;padding:22px}
+.result-card{flex:1;min-width:360px;padding:22px}
+
+/* Titles */
+h2,h3{margin:0 0 10px;color:#0b1220}
+
+/* ---------- Grid for inputs ---------- */
+/* use auto-fit + minmax so columns wrap and shrink properly */
+.grid-3{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap:12px;
+  margin-bottom:12px;
+}
+
+/* Field */
+.field{display:flex;flex-direction:column}
+.field label{font-size:13px;color:#0b1220;margin-bottom:6px}
+.hint{color:var(--muted);font-weight:500;font-size:11px;margin-left:6px}
+
+/* Inputs - crucial fixes to prevent overflow */
+.field input{
+  width:100%;
+  min-width:0;                /* allows grid children to shrink */
+  padding:12px;
+  border-radius:10px;
+  border:1px solid #e8f0fb;
+  background:#fff;
+  font-size:14px;
+  box-sizing:border-box;
+  overflow:hidden;            /* hide overflow */
+  text-overflow:ellipsis;
+  white-space:nowrap;         /* prevent wrap inside input */
+}
+
+/* Remove number input arrows (browser specific) */
+input[type="number"]{
+  -moz-appearance: textfield;
+}
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Inline small group (like RRR Auto button) */
+.inline{display:flex;gap:8px;align-items:center}
+.field.small .inline{align-items:center}
+
+/* Buttons */
+.btn-primary{
+  background:var(--primary);
+  color:white;
+  padding:12px 16px;
+  border-radius:10px;
+  border:none;
+  cursor:pointer;
+  font-weight:700;
+  box-shadow:0 6px 18px rgba(11,108,255,0.12);
+}
+.btn-primary:hover{transform:translateY(-1px);transition:transform 120ms ease}
+.btn-ghost{
+  background:transparent;
+  border:1px solid #e6eef6;
+  padding:10px 12px;
+  border-radius:10px;
+  color:var(--muted);
+  cursor:pointer;
+}
+
+/* Controls & Helper text */
+.controls{display:flex;gap:12px;margin-top:10px;flex-wrap:wrap}
+.help{margin-top:14px;color:var(--muted);font-size:13px}
+
+/* ---------- Result / Gauge ---------- */
+.result-top{display:flex;gap:18px;align-items:center}
+.gauge-wrap{width:240px;display:flex;align-items:center;justify-content:center}
+
+/* gauge arc stroke animation smoothing */
+#gauge-arc{transition: stroke-dasharray 700ms ease; filter: drop-shadow(0 6px 18px rgba(9,30,66,0.08));}
+
+/* Stats box */
+.stats{flex:1;min-width:180px}
+.stat-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed #f1f6fb;align-items:center}
+.stat-row .label{color:var(--muted);font-weight:600}
+.stat-row .value{font-weight:700;color:#0b1220}
+.stat-row.combined{font-size:20px;padding-top:12px}
+.stat-row .big{font-size:22px;color:var(--primary)}
+.indicator{margin-top:12px;padding:10px;border-radius:10px;background:#f6fbff;border:1px solid #eef6ff;color:var(--muted);display:inline-block}
+.summary{margin-top:12px;color:var(--muted);line-height:1.4}
+
+/* Quick facts list */
+.history{margin-top:18px}
+.history h4{margin:0 0 8px}
+#facts{margin:0;padding-left:18px;color:var(--muted)}
+
+/* Footer */
+.footer{text-align:center;color:var(--muted);margin-top:18px}
+
+/* ---------- Responsiveness ---------- */
+@media (max-width: 980px){
+  .layout{flex-direction:column}
+  .input-card{flex:1}
+}
+@media (max-width: 600px){
+  .grid-3{grid-template-columns:1fr}
+  .gauge-wrap{width:200px}
+}
+
+/* ---------- Dark mode (apply by .dark on body) ---------- */
+body.dark{
+  background:#071026;
+  color:#e6eef6;
+}
+body.dark .card{
+  background:#071426;
+  box-shadow:none;
+  border:1px solid rgba(255,255,255,0.04);
+}
+body.dark .field input{
+  background:#071426;
+  border:1px solid rgba(255,255,255,0.06);
+  color:#e6eef6;
+}
+body.dark .subtitle, body.dark .hint, body.dark #facts, body.dark .summary, body.dark .indicator{
+  color:rgba(230,238,246,0.85);
+}
+body.dark .stat-row .value{color:#e6eef6}
+body.dark #gauge-text{fill:#f8fafc}
+
+/* small helper for very long values inside inputs:
+   they will show ellipsis and not break layout */
+.field input::-webkit-input-placeholder { color: rgba(0,0,0,0.35); }
+body.dark .field input::-webkit-input-placeholder { color: rgba(255,255,255,0.12); }
+
+/* ---------- Utility (optional) ---------- */
+/* small badge / pill */
+.pill{display:inline-block;padding:6px 10px;border-radius:999px;background:#eef6ff;color:var(--primary);font-weight:600}
+
+/* End of file */

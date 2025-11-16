@@ -1,0 +1,13 @@
+{
+"version": "0.2.0",
+"configurations": [
+{
+"name": "Python: Run Flask API",
+"type": "python",
+"request": "launch",
+"program": "${workspaceFolder}/src/api_predict.py",
+"console": "integratedTerminal",
+"env": { "FLASK_ENV": "development" }
+}
+]
+}
