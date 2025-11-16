@@ -6,13 +6,6 @@ A machine learning project that predicts the winning probability of a cricket ma
 
 ---
 
-## 🔗 Live Demo  
-
-Check out the live project here:  
-👉 [Link](https://github.com/delljigyanshu/Cricket-Win-Predictor)  
-
----
-
 ## ✨ Features  
 
 - 🏆 *Predict winning probability* for cricket matches  
@@ -26,14 +19,13 @@ Check out the live project here:
 
 ## 📦 Project Structure  
 
-Cricket-Win-Predictor/
-├── dataset.csv # Cricket match dataset
-├── cricket_win_predictor.ipynb # Jupyter Notebook with model & analysis
-├── model.pkl # Saved ML model
-├── app.py # Flask web app (if included)
-├── requirements.txt # Required dependencies
-└── README.md # Project documentation
-
+Cricket-Win-Predictor/ <br/>
+├── dataset.csv # Cricket match dataset <br/>
+├── cricket_win_predictor.ipynb # Jupyter Notebook with model & analysis <br/>
+├── model.pkl # Saved ML model <br/>
+├── app.py # Flask web app (if included) <br/>
+├── requirements.txt # Required dependencies <br/>
+└── README.md # Project documentation <br/>
 
 ---
 
@@ -43,43 +35,33 @@ Cricket-Win-Predictor/
    ```bash
    git clone https://github.com/delljigyanshu/Cricket-Win-Predictor.git
    cd Cricket-Win-Predictor
-Install dependencies
+   
+2. Install dependencies
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-pip install -r requirements.txt
-
-
-Run the notebook
-
-Open cricket_win_predictor.ipynb in Jupyter Notebook / Jupyter Lab.
-
-Train & test the model step-by-step.
-
-Run the Flask app (if available)
-
-python app.py
-
-
-Open in browser
-
-Visit http://127.0.0.1:5000/
-
+3. Run the notebook
+   ```bash
+   Open cricket_win_predictor.ipynb in Jupyter Notebook / Jupyter Lab.
+   Train & test the model step-by-step.
+   Run the Flask app (if available)
+   python app.py
+   Open in browser
+   Visit http://127.0.0.1:5000/
+   ```
+   
 🛠 Built With
 
-Python 🐍
+- Python 🐍
+- Pandas
+- NumPy
+- Matplotlib
+- Scikit-learn (Random Forest)
+- Flask (optional)
+- Jupyter Notebook
 
-Pandas
-
-NumPy
-
-Matplotlib
-
-Scikit-learn (Random Forest)
-
-Flask (optional)
-
-Jupyter Notebook
-
-✏ Customization Ideas
+## ✏ Customization Ideas
 
 📈 Add real-time data scraping from cricket APIs
 
@@ -91,10 +73,11 @@ Jupyter Notebook
 
 🌐 Deploy to web using Streamlit / Flask / FastAPI
 
-🙋‍♂ Author
+## 🙋‍♂ Author
 
 Jigyanshu Agrawal
 
-GitHub: @delljigyanshu
+GitHub:[@delljigyanshu](https://github.com/delljigyanshu/Cricket-Win-Predictor.git)
 
-LinkedIn: Jigyanshu Agrawal
+LinkedIn: [Jigyanshu Agrawal](https://www.linkedin.com/in/jigyanshu-agrawal?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)
+
